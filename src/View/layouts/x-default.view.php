@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html lang="en">
 	<head>
+		<meta charset="utf-8">
 		<title :if="isset($title)">"{{ $title }}" &mdash; Starless</title>
 		<title :else>Starless</title>
 

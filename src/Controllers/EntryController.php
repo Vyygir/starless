@@ -25,7 +25,7 @@ final readonly class EntryController {
 		}
 
 		return view(
-			'pages/home.view.php',
+			'View/pages/home.view.php',
 			entries: $paginated['entries'],
 			page: $page,
 			maxPages: $paginated['maxPages'],
@@ -40,11 +40,11 @@ final readonly class EntryController {
 			return new Redirect('nevermore');
 		}
 
-		return view('pages/entry.view.php', entry: $entry);
+		return view('View/pages/entry.view.php', entry: $entry);
 	}
 
 	#[Get('/nevermore')]
 	public function nevermore(): View {
-		return view('pages/not-found.view.php');
+		return view('View/pages/not-found.view.php');
 	}
 }

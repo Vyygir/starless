@@ -1,9 +1,9 @@
 <x-slot name="meta">
-	<meta property="og:title" content="Read &quot;{{ $entry->title }}&quot; on Starless" />
-	<meta property="og:type" content="article" />
-	<meta property="og:url" content="{{ $entry->uri }}" />
-	<meta property="og:description" content="{{ $entry->excerpt }}" />
-	<meta property="og:image" content="https://starle.sh/static/meta/image.png" />
+	<meta property="og:title" content="Read &quot;{{ $entry->title }}&quot; on Starless">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="{{ $entry->uri }}">
+	<meta property="og:description" content="{{ $entry->excerpt }}">
+	<meta property="og:image" content="https://starle.sh/static/meta/image.png">
 </x-slot name=eta">
 
 <x-entry :title="$entry->title">

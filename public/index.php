@@ -14,10 +14,6 @@ HttpApplication::boot(
 			namespace: '',
 			path: __DIR__ . '/../assets/'
 		),
-		new DiscoveryLocation(
-			namespace: '',
-			path: __DIR__ . '/../views/'
-		),
 	]
 )->run();
 
