@@ -2,6 +2,8 @@
     "name": "tempest/app",
     "type": "project",
     "require": {
+		"php": ">=8.4",
+		"ext-intl": "*",
         "tempest/framework": "^2.0",
         "league/commonmark": "^2.7",
         "symfony/yaml": "^7.3"
