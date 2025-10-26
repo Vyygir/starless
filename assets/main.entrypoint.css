@@ -92,6 +92,15 @@
 		margin-bottom: 1rem;
 	}
 
+	pre + pre {
+		margin-top: 0;
+	}
+
+	pre:has(+ pre) {
+		margin-bottom: 0;
+		border-bottom: none !important;
+	}
+
 	blockquote {
 		overflow: hidden;
 	}
