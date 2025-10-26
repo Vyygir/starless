@@ -2,7 +2,11 @@
 title: "Tempest: The Journey Thus Far"
 slug: 'tempest-the-journey-thus-far'
 published: "2025-10-26"
+modified: "2025-10-26"
 excerpt: "Tempest is definitely unique. After spending some time with it, I kind of need to get some pain points off my chest."
+amendments: [
+    'Fixed a typo: "Stithcer" to "Stitcher"'
+]
 ---
 
 Let's start positively, purely so I can demonstrate that I'm not here to shit on someone's hard work.
@@ -106,7 +110,7 @@ So... yeah. Why the fuck _would_ my `EntryRepository` exist then?
 
 Because Tempest is still fairly new, I didn't have much hope of finding anyone else who'd done this. Until about ten 
 minutes later when I stumbled upon
-[Brent's implementation for the Stithcer.io rewrite](https://github.com/brendt/stitcher.io/blob/main/app/Blog/BlogPostRepository.php#L75).
+[Brent's implementation for the Stitcher.io rewrite](https://github.com/brendt/stitcher.io/blob/main/app/Blog/BlogPostRepository.php#L75).
 
 That's right. Assuming you're capable of reading code, you should've just read that **the creator of the fucking 
 framework** has already done this &mdash; without using Discovery. Yeah, I wasn't going to continue to try and shoehorn 
