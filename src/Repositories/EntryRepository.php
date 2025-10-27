@@ -9,6 +9,7 @@ use League\CommonMark\Extension\FrontMatter\Output\RenderedContentWithFrontMatte
 use Tempest\Container\Singleton;
 use Tempest\Cache\Cache;
 use Tempest\Support\Arr\MutableArray;
+use Starless\Config\StarlessConfig;
 use Starless\Models\Entry;
 use Starless\Exceptions\EntryParsingException;
 
@@ -19,6 +20,7 @@ use function Tempest\Support\Str\strip_start;
 #[Singleton]
 class EntryRepository {
 	public function __construct(
+		private StarlessConfig $config,
 		private MutableArray $entries,
 		private MarkdownConverter $converter,
 
@@ -62,13 +64,17 @@ class EntryRepository {
 			->sortByCallback(fn (Entry $a, Entry $b) => $b->published <=> $a->published);
 	}
 
+	public function getTotalPages(): int {
+		return ceil($this->all()->toImmutableArray()->count() / $this->config->entriesPerPage);
+	}
+
 	/** @return array [ entries: ?ImmutableArray, maxPages: int ] */
-	public function paginate(int $offset, int $limit): array {
+	public function paginate(int $offset): array {
 		$entries = $this->all()->toImmutableArray();
 
 		return [
-			'entries' => $entries->slice($offset, $limit),
-			'maxPages' => ceil($entries->count() / $limit),
+			'entries' => $entries->slice($offset, $this->config->entriesPerPage),
+			'maxPages' => $this->getTotalPages(),
 		];
 	}
 

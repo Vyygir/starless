@@ -4,9 +4,11 @@ namespace Starless\Controllers;
 
 use Tempest\Http\Responses\Redirect;
 use Tempest\Router\Get;
+use Tempest\Router\StaticPage;
 use Tempest\View\View;
 use Tempest\Http\Response;
 use Starless\Repositories\EntryRepository;
+use Starless\DataProviders\{EntryDataProvider, PaginationDataProvider};
 
 use function Tempest\view;
 
@@ -15,10 +17,20 @@ final readonly class EntryController {
 		private EntryRepository $repository
 	) {}
 
-    #[Get('/')]
+	#[StaticPage]
+	#[Get('/')]
+	public function index(): Response|View {
+		return $this->list();
+	}
+
+	#[StaticPage(PaginationDataProvider::class)]
 	#[Get('/page/{page}')]
-    public function index(int $page = 1): Response|View {
-		$paginated = $this->repository->paginate($page - 1, 5);
+	public function paginated(int $page): Response|View {
+		return $this->list($page);
+	}
+
+	private function list(int $page = 1): Response|View {
+		$paginated = $this->repository->paginate($page - 1);
 
 		if ($page > $paginated['maxPages']) {
 			return new Redirect('nevermore');
@@ -30,8 +42,9 @@ final readonly class EntryController {
 			page: $page,
 			maxPages: $paginated['maxPages'],
 		);
-    }
+	}
 
+	#[StaticPage(EntryDataProvider::class)]
 	#[Get('/{slug}')]
 	public function read(string $slug): Response|View {
 		$entry = $this->repository->find($slug);
