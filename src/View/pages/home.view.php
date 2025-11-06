@@ -9,7 +9,7 @@
 <x-definition>
 	<div class="grid grid-cols-1 sm:grid-cols-1 gap-8">
 		<article :foreach="$entries as $entry" class="group bg-white/2 p-6 rounded-lg border border-white/5 transition-colors duration-500 hover:border-white/15 relative">
-			<a href="{{ $entry->uri }}" class="block absolute w-full h-full"></a>
+			<a href="{{ $entry->uri }}" class="block absolute w-full h-full top-0 bottom-0 right-0 left-0"></a>
 			<div class="sm:flex sm:justify-between">
 				<time datetime="{{ $entry->published }}" class="block text-sm text-neutral-500">{{ $entry->publishedDate() }}</time>
 				<time datetime="{{ $entry->modified }}" class="block text-sm text-neutral-700" :if="$entry->modified">Amended, {{ $entry->modifiedDate() }}</time>
