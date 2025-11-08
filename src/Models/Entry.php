@@ -4,9 +4,12 @@ namespace Starless\Models;
 
 use DateTimeImmutable;
 use Tempest\DateTime\DateTime;
+use Tempest\Mapper\MapFrom;
 use Tempest\Router\Bindable;
-use function Tempest\Router\uri;
+use Tempest\Support\Arr\ImmutableArray;
 use Starless\Controllers\EntryController;
+
+use function Tempest\Router\uri;
 
 final class Entry implements Bindable {
 	public ?DateTime $modified = null;
@@ -19,6 +22,9 @@ final class Entry implements Bindable {
 		public DateTime $published,
 		public array $amendments,
 		public string $source,
+
+		/** @var ImmutableArray<Tag>[] */
+		public ?ImmutableArray $tags,
 	) {}
 
 	public string $uri {

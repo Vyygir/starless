@@ -2,8 +2,9 @@
 
 namespace Starless\Config;
 
-class StarlessConfig {
+readonly class StarlessConfig {
 	public function __construct(
 		public int $entriesPerPage,
+		public array $availableTags,
 	) {}
 }

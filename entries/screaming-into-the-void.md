@@ -3,6 +3,7 @@ title: "Screaming into the void"
 slug: 'screaming-into-the-void'
 published: "2025-10-25"
 excerpt: "I've launched a new project specifically and, mostly, for the sole purpose of brain-dumping which is, usually, a pretty gruesome process."
+tags: ['starless', 'personal']
 ---
 
 This isn't the first time I've built somewhere to publish my displaced, angry, or sometimes concerningly macabre 

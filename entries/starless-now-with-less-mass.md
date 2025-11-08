@@ -3,6 +3,7 @@ title: "Starless: Now With Less Mass"
 slug: 'starless-now-with-less-mass'
 published: "2025-10-27"
 excerpt: "The original amount of mass felt a bit too dense. Chances of spaghettification whilst reading have now been reduced to only around 14%."
+tags: ['starless', 'engineering']
 ---
 
 I'll keep it brief but Starless is now using static generation to serve pages, instead of just serving directly through 

@@ -6,7 +6,8 @@
 		<title :if="isset($title)">"{{ $title }}" &mdash; Starless</title>
 		<title :else>Starless</title>
 
-		<x-slot name="meta" />
+        <x-slot name="meta" />
+        <x-manifests />
 
 		<x-vite-tags />
 
@@ -17,7 +18,11 @@
 
 	<body class="bg-neutral-950 text-white">
 		<div class="max-w-3xl mx-auto px-6 py-12 sm:px-8">
-			<x-slot />
+            <x-definition />
+
+            <main role="main">
+                <x-slot />
+            </main>
 		</div>
 	</body>
 </html>

@@ -3,6 +3,7 @@ title: "The Breach of Sanity; The Edge of Optimism"
 slug: 'breaching-sanity-edging-optimism'
 published: "2025-11-06"
 excerpt: "The most important thing any of us can be doing at any one point in time is surviving. Sometimes, it's okay to need help doing that."
+tags: ['personal', 'emotional', 'not-real']
 ---
 
 In so many paths of life, nearly everything we deal with is a complete and utter facade.

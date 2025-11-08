@@ -8,21 +8,23 @@ use League\CommonMark\Exception\CommonMarkException;
 use League\CommonMark\Extension\FrontMatter\Output\RenderedContentWithFrontMatter;
 use Tempest\Container\Singleton;
 use Tempest\Cache\Cache;
-use Tempest\Support\Arr\MutableArray;
+use Tempest\Support\Arr\ImmutableArray;
 use Starless\Config\StarlessConfig;
-use Starless\Models\Entry;
+use Starless\Mappers\EntryMapper;
+use Starless\Models\{Entry, Tag};
 use Starless\Exceptions\EntryParsingException;
 
 use function Tempest\map;
 use function Tempest\root_path;
+use function Tempest\Support\arr;
 use function Tempest\Support\Str\strip_start;
 
 #[Singleton]
 class EntryRepository {
 	public function __construct(
-		private StarlessConfig $config,
-		private MutableArray $entries,
-		private MarkdownConverter $converter,
+		private readonly StarlessConfig $config,
+		private array $entries = [],
+		private readonly MarkdownConverter $converter,
 
 		/** @todo Yes, we need to implement caching, I know. */
         //private Cache $cache,
@@ -50,7 +52,11 @@ class EntryRepository {
 				continue;
 			}
 
-			$this->add($entry, $contents);
+			$this->entries[] = map([
+				'content' => $entry->getContent(),
+				'source' => $contents,
+				...$entry->getFrontMatter(),
+			])->with(EntryMapper::class)->to(Entry::class);
 		}
 	}
 
@@ -58,34 +64,25 @@ class EntryRepository {
 		return $this->all()->first(fn (Entry $entry) => $entry->slug === $slug);
 	}
 
-	public function all(): MutableArray {
-		return $this->entries
+	public function all(?Tag $tag = null, bool $output = false): ImmutableArray {
+		return arr($this->entries)
 			->filter(fn (Entry $entry) => new DateTimeImmutable($entry->published) <= new DateTimeImmutable())
+			->filter(fn (Entry $entry) => is_null($tag) || $entry->tags->contains($tag))
 			->sortByCallback(fn (Entry $a, Entry $b) => $b->published <=> $a->published);
 	}
 
-	public function getTotalPages(): int {
-		return ceil($this->all()->toImmutableArray()->count() / $this->config->entriesPerPage);
+	public function getTotalPages(?Tag $tag = null): int {
+		return max(ceil($this->all($tag)->count() / $this->config->entriesPerPage), 1);
 	}
 
 	/** @return array [ entries: ?ImmutableArray, maxPages: int ] */
-	public function paginate(int $offset): array {
-		$entries = $this->all()->toImmutableArray();
+	public function paginate(int $offset, ?Tag $tag = null): array {
+		$entries = $this->all($tag);
 
 		return [
 			'entries' => $entries->slice($offset, $this->config->entriesPerPage),
-			'maxPages' => $this->getTotalPages(),
+			'maxPages' => $this->getTotalPages($tag),
 		];
-	}
-
-	public function add(RenderedContentWithFrontMatter $entry, string $sourceContent): void {
-		$this->entries->push(
-			map([
-				'content' => $entry->getContent(),
-				'source' => $sourceContent,
-				...$entry->getFrontMatter(),
-			])->to(Entry::class)
-		);
 	}
 
 	private function processPotentialEntry(string $contents): RenderedContentWithFrontMatter {

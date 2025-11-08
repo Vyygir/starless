@@ -8,8 +8,9 @@ use Tempest\Router\StaticPage;
 use Tempest\View\View;
 use Tempest\Http\Response;
 use Starless\Repositories\EntryRepository;
-use Starless\DataProviders\{EntryDataProvider, PaginationDataProvider};
+use Starless\DataProviders\{EntryDataProvider, PaginatedEntryDataProvider};
 
+use function Tempest\root_path;
 use function Tempest\view;
 
 final readonly class EntryController {
@@ -23,7 +24,7 @@ final readonly class EntryController {
 		return $this->list();
 	}
 
-	#[StaticPage(PaginationDataProvider::class)]
+	#[StaticPage(PaginatedEntryDataProvider::class)]
 	#[Get('/page/{page}')]
 	public function paginated(int $page): Response|View {
 		return $this->list($page);
@@ -37,7 +38,8 @@ final readonly class EntryController {
 		}
 
 		return view(
-			'View/pages/home.view.php',
+			// I don't know what the fuck has happened here or why this is required, but here we are
+			root_path('views/pages/home.view.php'),
 			entries: $paginated['entries'],
 			page: $page,
 			maxPages: $paginated['maxPages'],
@@ -53,11 +55,11 @@ final readonly class EntryController {
 			return new Redirect('nevermore');
 		}
 
-		return view('View/pages/entry.view.php', entry: $entry);
+		return view('views/pages/entry.view.php', entry: $entry);
 	}
 
 	#[Get('/nevermore')]
 	public function nevermore(): View {
-		return view('View/pages/not-found.view.php');
+		return view(root_path('views/pages/not-found.view.php'));
 	}
 }

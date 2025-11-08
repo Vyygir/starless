@@ -6,7 +6,7 @@ use Generator;
 use Tempest\Router\DataProvider;
 use Starless\Repositories\EntryRepository;
 
-class PaginationDataProvider implements DataProvider {
+final readonly class PaginatedEntryDataProvider implements DataProvider {
 	public function __construct(
 		private EntryRepository $repository,
 	) {}
