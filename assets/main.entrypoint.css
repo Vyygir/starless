@@ -71,7 +71,7 @@
 		margin-bottom: 0.1rem;
 	}
 
-	a {
+	a:not(.entry-tag) {
 		font-weight: 300;
 		text-decoration: underline;
 	}

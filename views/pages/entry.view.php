@@ -19,7 +19,7 @@
                 <a
                     :foreach="$entry->tags as $tag"
                     href="{{ $tag->uri }}"
-                    class="block px-3 rounded-2xl border-1 border-white/10 font-semibold leading-6 tracking-wide no-underline text-sm {{ $tag->style->getClass() }}">
+                    class="entry-tag block px-3 rounded-2xl border-1 border-white/10 font-semibold leading-6 tracking-wide no-underline text-sm {{ $tag->style->getClass() }}">
                     {{ $tag->name }}
                 </a>
             </div>
