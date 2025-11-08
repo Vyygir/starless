@@ -16,7 +16,8 @@
     "autoload": {
         "psr-4": {
             "Starless\\": "src/",
-            "Views\\": "views/"
+            "Views\\": "views/",
+            "Config\\": "config/"
         }
     },
     "autoload-dev": {
