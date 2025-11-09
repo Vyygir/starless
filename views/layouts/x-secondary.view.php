@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title :if="isset($title)">"{{ $title }}" &mdash; Starless</title>
+		<title :if="isset($title)">&#8220;{{ $title }}&#8221; &mdash; Starless</title>
 		<title :else>Starless</title>
 
 		<x-slot name="meta" />
