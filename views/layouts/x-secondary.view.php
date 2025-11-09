@@ -6,9 +6,11 @@
 		<title :if="isset($title)">&#8220;{{ $title }}&#8221; &mdash; Starless</title>
 		<title :else>Starless</title>
 
-		<x-slot name="meta" />
-        <x-manifests />
+        <x-slot name="meta">
+            <x-default-meta />
+        </x-slot>
 
+        <x-manifests />
 		<x-vite-tags />
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
