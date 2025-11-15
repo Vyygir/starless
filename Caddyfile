@@ -30,6 +30,6 @@
 	{$CADDY_SERVER_EXTRA_DIRECTIVES}
 
 	php_server {
-		try_files {path} /index.php
+		try_files {path} {path}/index.html /index.php
 	}
 }
