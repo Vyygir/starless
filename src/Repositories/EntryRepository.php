@@ -80,7 +80,7 @@ class EntryRepository {
 		$entries = $this->all($tag);
 
 		return [
-			'entries' => $entries->slice($offset, $this->config->entriesPerPage),
+			'entries' => $entries->slice($offset * $this->config->entriesPerPage, $this->config->entriesPerPage),
 			'maxPages' => $this->getTotalPages($tag),
 		];
 	}
