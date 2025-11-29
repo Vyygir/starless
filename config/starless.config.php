@@ -44,5 +44,10 @@ return new StarlessConfig(
 			'colour' => FRAMEWORK_COLOUR,
 			'preserveCase' => true,
 		],
+		[
+			'name' => 'WordPress',
+			'colour' => FRAMEWORK_COLOUR,
+			'preserveCase' => true,
+		],
 	],
 );
