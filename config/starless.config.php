@@ -38,6 +38,16 @@ return new StarlessConfig(
 			'colour' => LANGUAGE_COLOUR,
 			'preserveCase' => true,
 		],
+		[
+			'name' => 'JavaScript',
+			'colour' => LANGUAGE_COLOUR,
+			'preserveCase' => true,
+		],
+		[
+			'name' => 'TypeScript',
+			'colour' => LANGUAGE_COLOUR,
+			'preserveCase' => true,
+		],
 		// Framework
 		[
 			'name' => 'Tempest',
