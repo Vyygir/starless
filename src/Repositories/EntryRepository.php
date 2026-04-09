@@ -21,9 +21,10 @@ use function Tempest\Support\Str\strip_start;
 
 #[Singleton]
 class EntryRepository {
+	private array $entries = [];
+	
 	public function __construct(
 		private readonly StarlessConfig $config,
-		private array $entries = [],
 		private readonly MarkdownConverter $converter,
 
 		/** @todo Yes, we need to implement caching, I know. */
