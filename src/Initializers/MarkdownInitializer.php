@@ -4,14 +4,13 @@ namespace Starless\Initializers;
 
 use Tempest\Container\{Container, Initializer, Singleton};
 use League\CommonMark\Environment\Environment;
-use League\CommonMark\Extension\{CommonMark\CommonMarkCoreExtension,
-	CommonMark\Node\Block\FencedCode,
-	FrontMatter\FrontMatterExtension,
-	Strikethrough\StrikethroughExtension
-};
-
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
+use League\CommonMark\Extension\FrontMatter\FrontMatterExtension;
+use League\CommonMark\Extension\Strikethrough\StrikethroughExtension;
 use League\CommonMark\MarkdownConverter;
-use Starless\Support\Markdown\CodeBlockRenderer;
+use Starless\Support\Markdown\{CodeBlockRenderer, ImageRenderer};
 
 class MarkdownInitializer implements Initializer {
 	#[Singleton]
