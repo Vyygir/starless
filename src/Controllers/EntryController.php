@@ -55,7 +55,7 @@ final readonly class EntryController {
 			return new Redirect('nevermore');
 		}
 
-		return view('views/pages/entry.view.php', entry: $entry);
+		return view(root_path('views/pages/entry.view.php'), entry: $entry);
 	}
 
 	#[Get('/nevermore')]
