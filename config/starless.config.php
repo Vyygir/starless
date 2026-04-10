@@ -5,6 +5,7 @@ use Starless\Config\StarlessConfig;
 const TOPIC_COLOUR = 'cyan';
 const LANGUAGE_COLOUR = 'lime';
 const FRAMEWORK_COLOUR = 'sky';
+const SYSTEMS_COLOUR = 'red';
 
 return new StarlessConfig(
 	entriesPerPage: 5,
@@ -13,6 +14,10 @@ return new StarlessConfig(
 			'name' => 'Starless',
 			'colour' => 'neutral',
 			'preserveCase' => true,
+		],
+		[
+			'name' => 'Hardware',
+			'colour' => 'neutral',
 		],
 		// Topic
 		[
@@ -59,5 +64,10 @@ return new StarlessConfig(
 			'colour' => FRAMEWORK_COLOUR,
 			'preserveCase' => true,
 		],
+		// Systems
+		[
+			'name' => 'Linux',
+			'colour' => SYSTEMS_COLOUR,
+		]
 	],
 );
