@@ -9,7 +9,7 @@
 }
 
 @utility prose-white {
-	--tw-prose-body: var(--color-white);
+	--tw-prose-body: var(--color-neutral-400);
 	--tw-prose-headings: var(--color-white);
 	--tw-prose-lead: var(--color-white);
 	--tw-prose-links: var(--color-white);
@@ -55,14 +55,14 @@
 	p {
         margin-top: 1rem;
 		margin-bottom: 1rem;
-		font-weight: 300;
+		font-weight: 400;
 	}
 
 	ol li,
 	ul li {
 		margin-top: 0.25rem;
 		margin-bottom: 0.25rem;
-		font-weight: 300;
+		font-weight: 400;
 	}
 
 	li > ul,
@@ -72,7 +72,7 @@
 	}
 
 	a:not(.entry-tag) {
-		font-weight: 300;
+		font-weight: 400;
 		text-decoration: underline;
 	}
 

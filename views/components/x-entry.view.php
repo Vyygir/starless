@@ -13,5 +13,5 @@
 	</div>
 
 	<h3 class="mt-2 mb-3 text-3xl font-serif text-white/75 transition-colors duration-350 group-hover:text-white/100">{{ $entry->title }}</h3>
-	<p class="text-md leading-7 font-light text-white/60">{{ $entry->excerpt }}</p>
+	<p class="text-md leading-7 text-neutral-400">{{ $entry->excerpt }}</p>
 </article>
